@@ -3,7 +3,7 @@ import java.util.*;
 
 public class ReadFile {
     public static String line = "";
-    public static String file_location = "soc-sign-bitcoinotc.csv";
+    public static String file_location = "C:\\Users\\musta\\Desktop\\Hacettepe\\DREAM\\lastfm_asia_edges.csv";
     public static ArrayList<String> lines = new ArrayList<String>();
 
     public ReadFile() throws IOException {
@@ -20,12 +20,12 @@ public class ReadFile {
         for (String line: lines) {
             String[] splitted = line.split(",");
 
-            if (!graph.map.containsKey(Integer.valueOf(splitted[0]))){
+            if (!graph.map.containsKey(Integer.parseInt(splitted[0]))){
                 UndirectedNode node1 = new UndirectedNode(Integer.parseInt(splitted[0]));
                 graph.map.put(node1.id, node1);
             }
 
-            if (!graph.map.containsKey(Integer.valueOf(splitted[1]))){
+            if (!graph.map.containsKey(Integer.parseInt(splitted[1]))){
                 UndirectedNode node2 = new UndirectedNode(Integer.parseInt(splitted[1]));
                 graph.map.put(node2.id, node2);
             }
@@ -33,6 +33,11 @@ public class ReadFile {
             graph.connect(Integer.parseInt(splitted[0]), Integer.parseInt(splitted[1]));
 
         }
+
+        for(int id: graph.map.keySet()){
+            Collections.sort(graph.map.get(id).adjacency_list);
+        }
+
         return graph;
     }
 }
