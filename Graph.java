@@ -21,6 +21,10 @@ public class Graph {
         ArrayList<UndirectedNode> edge = new ArrayList<UndirectedNode>();
         edge.add(node1); edge.add(node2);
         this.edge_list.add(edge);
+
+        Collections.sort(node1.adjacency_list);
+        Collections.sort(node2.adjacency_list);
+
     }
 
     public void disconnect(int node1_id, int node2_id){
@@ -40,3 +44,4 @@ public class Graph {
         }
     }
 }
+
